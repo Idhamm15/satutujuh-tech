@@ -83,8 +83,8 @@ export default function Footer() {
               <FontAwesomeIcon icon={faPhone} className="text-sm mt-1" />
               <div className="space-y-1">
                 <p>+62 857 0000 717 17 (Admin)</p>
-                <p>+62 877 888 98 454 (Triaji)</p>
-                <p>+62 838 2472 3921 (Idham)</p>
+                <p>+62 877 888 98 454 (Sales)</p>
+                <p>+62 838 2472 3921 (Sales)</p>
               </div>
             </div>
 
