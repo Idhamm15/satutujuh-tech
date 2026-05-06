@@ -75,20 +75,29 @@ export default function Footer() {
           <h4 className="text-gray-900 font-semibold mb-4">Contact</h4>
 
           <div className="space-y-3 text-sm text-gray-600">
-            <p className="flex items-center gap-2">
-              <FontAwesomeIcon icon={faPhone} className="text-sm" />
-              +62 812 3456 7890
-            </p>
+            
+            {/* Phone group */}
+            <div className="flex items-start gap-2">
+              <FontAwesomeIcon icon={faPhone} className="text-sm mt-1" />
+              <div className="space-y-1">
+                <p>+62 857 0000 717 17 (Admin)</p>
+                <p>+62 877 888 98 454 (Triaji)</p>
+                <p>+62 838 2472 3921 (Idham)</p>
+              </div>
+            </div>
 
+            {/* Email */}
             <p className="flex items-center gap-2">
               <FontAwesomeIcon icon={faEnvelope} className="text-sm" />
               hello@satutujuh.com
             </p>
 
+            {/* Location */}
             <p className="flex items-center gap-2">
               <FontAwesomeIcon icon={faLocationDot} className="text-sm" />
               Indonesia
             </p>
+
           </div>
         </div>
 
