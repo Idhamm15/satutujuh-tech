@@ -56,6 +56,8 @@ export default function Footer() {
             <li><a className="hover:text-gray-900 transition">Mobile Apps</a></li>
             <li><a className="hover:text-gray-900 transition">UI/UX Design</a></li>
             <li><a className="hover:text-gray-900 transition">IT Consulting</a></li>
+            <li><a className="hover:text-gray-900 transition">IT Infrastructure</a></li>
+            <li><a className="hover:text-gray-900 transition">Sosial Media Management</a></li>
           </ul>
         </div>
 
@@ -89,13 +91,13 @@ export default function Footer() {
             {/* Email */}
             <p className="flex items-center gap-2">
               <FontAwesomeIcon icon={faEnvelope} className="text-sm" />
-              hello@satutujuh.com
+              satutujuhtech@gmail.com
             </p>
 
             {/* Location */}
             <p className="flex items-center gap-2">
               <FontAwesomeIcon icon={faLocationDot} className="text-sm" />
-              Indonesia
+              Jakarta, Indonesia
             </p>
 
           </div>
