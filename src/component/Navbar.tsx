@@ -20,7 +20,7 @@ export default function Navbar() {
         {/* LEFT */}
         <div className="flex items-center justify-between py-6">
           <div className="relative">
-            <img src="/img/satutujuhtech.webp" width={150} height={50} alt="" />
+            <img src="/img/satutujuhtech.webp" width={190} height={50} alt="" />
           </div>
 
           {/* HAMBURGER */}
@@ -34,10 +34,10 @@ export default function Navbar() {
 
         {/* MENU */}
         <nav
-          className={`flex flex-col md:flex-row md:items-center md:justify-end transition-all duration-300 ${
-            open ? "block" : "hidden md:flex"
-          }`}
+          className={`flex flex-col md:flex-row md:items-center md:justify-end transition-all duration-300 
+          ${open ? "block bg-gray-100 p-4 rounded-xl mt-2" : "hidden md:flex bg-transparent"}`}
         >
+        
           {menus.map((item) => (
             <Link
               key={item.name}
@@ -53,7 +53,8 @@ export default function Navbar() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="px-6 py-3 mt-2 bg-white text-gray-800 rounded-full md:mt-8 md:ml-4 hover:bg-gray-100 transition"
+            className="px-6 py-3 mt-2 bg-white text-gray-800 rounded-full md:mt-8 md:ml-4 
+            transition-all duration-500 transform hover:scale-115"
           >
             Contact
           </Link>

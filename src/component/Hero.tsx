@@ -18,7 +18,7 @@ export default function Hero() {
           
           <h1
             data-aos="fade-right"
-            className="my-4 text-5xl font-bold leading-tight text-darken"
+            className="my-4 text-4xl font-bold leading-tight text-darken"
           >
             <span className="text-yellow-500">Transform</span> Your Business with Technology
           </h1>
@@ -26,7 +26,7 @@ export default function Hero() {
           <p
             data-aos="fade-down"
             data-aos-delay="300"
-            className="text-2xl mb-8"
+            className="text-xl mb-8"
           >
             Satutujuh is a software house and IT consulting partner that delivers innovative solutions to drive efficiency, growth, and digital transformation.
           </p>
