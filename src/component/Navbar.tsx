@@ -20,7 +20,7 @@ export default function Navbar() {
         {/* LEFT */}
         <div className="flex items-center justify-between py-6">
           <div className="relative">
-            <img src="/img/satutujuhtech.webp" width={190} height={50} alt="" />
+            <img src="/img/logo.webp" width={190} height={50} alt="" />
           </div>
 
           {/* HAMBURGER */}

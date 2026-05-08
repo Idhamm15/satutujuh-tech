@@ -55,7 +55,7 @@ export default function Hero() {
           {/* MAIN IMAGE */}
           <img
             className="w-10/12 mx-auto 2xl:-mb-20"
-            src="/img/girl.png"
+            src="/img/hero.webp"
             alt="hero"
           />
 
