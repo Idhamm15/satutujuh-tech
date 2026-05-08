@@ -112,9 +112,12 @@ export default function Footer() {
             modern UI systems, and reliable backend architecture.
           </p>
 
-          <button className="bg-yellow-500 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-yellow-400 transition">
+          <a
+            href="https://wa.me/62857000071717?text=Halo%20kak,%20saya%20ingin%20buat%20project%20bersama%20Satutujuh%20Tech,%20apakah%20bisa%20di%20bantu%3F"
+            className="inline-block bg-yellow-500 text-white px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:bg-yellow-400 hover:scale-110"
+          >
             Start Project
-          </button>
+          </a>
         </div>
       </div>
 

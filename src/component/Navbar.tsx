@@ -51,7 +51,7 @@ export default function Navbar() {
 
           {/* BUTTON */}
           <Link
-            href="/contact"
+            href="https://wa.me/62857000071717?text=Halo%20kak,%20saya%20ingin%20buat%20project%20bersama%20Satutujuh%20Tech,%20apakah%20bisa%20di%20bantu%3F"
             onClick={() => setOpen(false)}
             className="px-6 py-3 mt-2 bg-white text-gray-800 rounded-full md:mt-8 md:ml-4 
             transition-all duration-500 transform hover:scale-115"

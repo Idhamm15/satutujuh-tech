@@ -36,7 +36,7 @@ export default function Hero() {
             data-aos-delay="700"
             className="flex flex-col md:flex-row items-center gap-5"
           >
-            <a href="#"  className="bg-yellow-500 text-white text-xl font-bold rounded-full py-4 px-9 hover:scale-110 transition">
+            <a href="https://wa.me/62857000071717?text=Halo%20kak,%20saya%20ingin%20buat%20project%20bersama%20Satutujuh%20Tech,%20apakah%20bisa%20di%20bantu%3F"  className="bg-yellow-500 text-white text-xl font-bold rounded-full py-4 px-9 hover:scale-110 transition">
               Start Your Project
             </a>
 
