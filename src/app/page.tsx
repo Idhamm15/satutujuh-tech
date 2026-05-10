@@ -12,7 +12,7 @@ export default function Home() {
       <LandingHero/>
       <Features/>
       <About/>
-      <section className="py-10 overflow-hidden">
+      {/* <section className="py-10 overflow-hidden">
         <div className="flex flex-col text-center text-black max-w-screen-md mx-auto">
             <h2 className="text-4xl font-medium lg:text-7xl">
                 <span
@@ -39,7 +39,6 @@ export default function Home() {
                     <img className="w-20 h-20 object-contain grayscale hover:grayscale-0 transition duration-300" src="/imgs/logos/tailwind.png" alt="" />
                     <img className="w-20 h-20 object-contain grayscale hover:grayscale-0 transition duration-300" src="/imgs/logos/premierePro.png" alt="" />
 
-                    {/* duplicate biar looping smooth */}
                     <img className="w-20 h-20 object-contain grayscale hover:grayscale-0 transition duration-300" src="/imgs/logos/html.png" alt="" />
                     <img className="w-20 h-20 object-contain grayscale hover:grayscale-0 transition duration-300" src="/imgs/logos/css.png" alt="" />
                     <img className="w-20 h-20 object-contain grayscale hover:grayscale-0 transition duration-300" src="/imgs/logos/js.png" alt="" />
@@ -53,7 +52,7 @@ export default function Home() {
                 </div>
             </div>
         </div>
-    </section>
+    </section> */}
       <Footer/>
     </>
   );
