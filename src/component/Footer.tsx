@@ -21,7 +21,7 @@ export default function Footer() {
         {/* LOGO + DESC */}
         <div>
           <img
-            src="/img/satutujuhtech.webp"
+            src="/img/logo.webp"
             alt="logo"
             className="mb-4 w-32"
           />
@@ -82,9 +82,9 @@ export default function Footer() {
             <div className="flex items-start gap-2">
               <FontAwesomeIcon icon={faPhone} className="text-sm mt-1" />
               <div className="space-y-1">
-                <p>+62 857 0000 717 17 (Admin)</p>
+                <p>+62 857 000 717 17 (Admin)</p>
                 <p>+62 877 888 98 454 (Sales)</p>
-                <p>+62 838 2472 3921 (Sales)</p>z
+                <p>+62 838 2472 3921 (Sales)</p>
               </div>
             </div>
 
