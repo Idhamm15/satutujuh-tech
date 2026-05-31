@@ -148,37 +148,37 @@ export default function Footer() {
 
               <li>
                 <a className="transition hover:text-cyan-300">
-                  _Jasa Pembuatan Aplikasi
+                  Jasa Pembuatan Aplikasi
                 </a>
               </li>
 
               <li>
                 <a className="transition hover:text-cyan-300">
-                  _Jasa Pembuatan Website
+                  Jasa Pembuatan Website
                 </a>
               </li>
 
               <li>
                 <a className="transition hover:text-cyan-300">
-                  _Jasa Mobile Apps
+                  Jasa Mobile Apps
                 </a>
               </li>
 
               <li>
                 <a className="transition hover:text-cyan-300">
-                  _IT Infrastructure
+                  IT Infrastructure
                 </a>
               </li>
 
               <li>
                 <a className="transition hover:text-cyan-300">
-                  _Maintenance Website
+                  Maintenance Website
                 </a>
               </li>
 
               <li>
                 <a className="transition hover:text-cyan-300">
-                  _Strategi Digital
+                  Strategi Digital
                 </a>
               </li>
 
@@ -195,31 +195,31 @@ export default function Footer() {
 
               <li>
                 <a className="transition hover:text-cyan-300">
-                  _Jasa Pembuatan Aplikasi Jakarta
+                  Jasa Pembuatan Aplikasi Jakarta
                 </a>
               </li>
 
               <li>
                 <a className="transition hover:text-cyan-300">
-                  _Jasa Pembuatan Website Bekasi
+                  Jasa Pembuatan Website Bekasi
                 </a>
               </li>
 
               <li>
                 <a className="transition hover:text-cyan-300">
-                  _Jasa Pembuatan Website Bogor
+                  Jasa Pembuatan Website Bogor
                 </a>
               </li>
 
               <li>
                 <a className="transition hover:text-cyan-300">
-                  _Jasa Pembuatan Website Tangerang
+                  Jasa Pembuatan Website Tangerang
                 </a>
               </li>
 
               <li>
                 <a className="transition hover:text-cyan-300">
-                  _Jasa Pembuatan Aplikasi Depok
+                  Jasa Pembuatan Aplikasi Depok
                 </a>
               </li>
 
