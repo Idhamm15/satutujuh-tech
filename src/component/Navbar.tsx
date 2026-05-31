@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -26,10 +28,11 @@ export default function Navbar() {
 
           {/* HAMBURGER */}
           <button
-            className="md:hidden"
+            className="text-white md:hidden"
             onClick={() => setOpen(!open)}
+            aria-label="Toggle Menu"
           >
-            ☰
+            <FontAwesomeIcon icon={faBars} size="lg" />
           </button>
         </div>
 
