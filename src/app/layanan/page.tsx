@@ -98,7 +98,7 @@ export default function ServicePage() {
             {/* Right */}
             <div>
               <span className="text-sm text-gray-500">
-                Mengapa Memilih TebarDigital?
+                Mengapa Memilih Satutujuh?
               </span>
 
               <h1 className="mt-3 text-4xl font-bold leading-tight text-slate-900 md:text-5xl">
