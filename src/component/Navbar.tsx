@@ -7,10 +7,11 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const menus = [
-    { name: "Home", href: "/" },
-    { name: "Careers", href: "/careers" },
+    { name: "Beranda", href: "/" },
+    { name: "Layanan", href: "/layanan" },
+    { name: "Portofolio", href: "/portofolio" },
     { name: "Blog", href: "/blog" },
-    { name: "About Us", href: "/about" },
+    { name: "Kontak Kami", href: "/kontak-kami" },
   ];
 
   return (
@@ -43,7 +44,7 @@ export default function Navbar() {
               key={item.name}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="px-4 py-2 mt-2 md:mt-8 md:ml-4 rounded-lg transition-all duration-200 hover:bg-gray-100 hover:text-gray-900"
+              className="px-4 py-2 mt-2 md:mt-8 md:ml-4 rounded-lg transition-all duration-200 hover:bg-yellow-500 hover:text-white"
             >
               {item.name}
             </Link>
@@ -53,10 +54,10 @@ export default function Navbar() {
           <Link
             href="https://wa.me/62857000071717?text=Halo%20kak,%20saya%20ingin%20buat%20project%20bersama%20Satutujuh%20Tech,%20apakah%20bisa%20di%20bantu%3F"
             onClick={() => setOpen(false)}
-            className="px-6 py-3 mt-2 bg-white text-gray-800 rounded-full md:mt-8 md:ml-4 
+            className="px-6 py-3 mt-2 bg-white hover:bg-yellow-500 hover:text-white text-gray-800 rounded-full md:mt-8 md:ml-4 
             transition-all duration-500 transform hover:scale-115"
           >
-            Contact
+            Hubungi Kami
           </Link>
         </nav>
       </div>

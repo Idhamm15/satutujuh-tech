@@ -3,7 +3,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export default function Features() {
   return (
-    <div className="container px-4 lg:px-8 mx-auto max-w-screen-xl text-gray-700">
+    <div className="container px-4 lg:px-8 mx-auto max-w-screen-xl text-gray-700 mb-30">
       
       {/* Heading */}
       <div className="max-w-xl mx-auto text-center mt-24">
@@ -11,7 +11,7 @@ export default function Features() {
           All-In-One <span className="text-yellow-500">Digital Solutions.</span>
         </h1>
         <p className="text-gray-500">
-            Satutujuh provides end-to-end software development and IT consulting services to help businesses build, manage, and scale their digital products efficiently.
+            Satutujuh menyediakan layanan pengembangan perangkat lunak dan konsultasi TI menyeluruh untuk membantu bisnis membangun, mengelola, dan meningkatkan skala produk digital mereka secara efisien.
         </p>
       </div>
 
@@ -20,21 +20,21 @@ export default function Features() {
         
         <FeatureCard
             title="Custom Software Development"
-            description="Build scalable and secure web and mobile applications tailored to your business needs."
+            description="Bangun aplikasi web dan seluler yang skalabel dan aman, yang disesuaikan dengan kebutuhan bisnis Anda."
             color="#5B72EE"
             icon={<i className="fa-solid fa-code text-white text-xl"></i>}
         />
 
         <FeatureCard
             title="IT Consulting & System Integration"
-            description="Optimize your business processes with expert consulting and seamless system integration."
+            description="Optimalkan proses bisnis Anda dengan konsultasi ahli dan integrasi sistem yang lancar."
             color="#F48C06"
             icon={<i className="fa-solid fa-gear text-white text-xl"></i>}
         />
 
         <FeatureCard
             title="Business & Customer Solutions"
-            description="Manage customers, data, and workflows efficiently with smart digital solutions."
+            description="Kelola pelanggan, data, dan alur kerja secara efisien dengan solusi digital cerdas."
             color="#29B9E7"
             icon={<i className="fa-solid fa-users text-white text-xl"></i>}
         />

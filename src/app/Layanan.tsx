@@ -6,19 +6,17 @@ import Footer from "@/component/Footer";
 import OurApproach from "@/component/OurApproach";
 import FaqSection from "@/component/FaqSection";
 import LandingHero from "@/component/LandingHero";
-import PortofolioSection from "@/component/PortofolioSection";
 import Navbar from "@/component/Navbar";
 import Image from "next/image";
-import CTA from "@/component/CTA";
 
-export default function Home() {
+export default function Layanan() {
   return (
     <>
-      <LandingHero />
-      <Features />
+      <Navbar/>
+
+      <About />
       <OurApproach />
-      <PortofolioSection />
-      <CTA/>
+      <FaqSection />
       <Footer />
 
       {/* BACK TO TOP */}

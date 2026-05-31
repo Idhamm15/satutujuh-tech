@@ -1,27 +1,26 @@
 "use client";
 
 import About from "@/component/About";
-import Features from "@/component/Feature";
 import Footer from "@/component/Footer";
 import OurApproach from "@/component/OurApproach";
 import FaqSection from "@/component/FaqSection";
-import LandingHero from "@/component/LandingHero";
-import PortofolioSection from "@/component/PortofolioSection";
 import Navbar from "@/component/Navbar";
-import Image from "next/image";
+import Header from "@/component/Header";
+import BasePortfolio from "@/component/BasePortofolio";
 import CTA from "@/component/CTA";
 
-export default function Home() {
+export default function PortfolioPage() {
   return (
     <>
-      <LandingHero />
-      <Features />
-      <OurApproach />
-      <PortofolioSection />
-      <CTA/>
-      <Footer />
+      <Navbar/>
+      <Header
+        badge="Services"
+        title="Portofolio"
+      />
+      <BasePortfolio/>
+      <CTA  />
 
-      {/* BACK TO TOP */}
+      <Footer />
       <button
         onClick={() =>
           window.scrollTo({

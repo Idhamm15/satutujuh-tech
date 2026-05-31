@@ -20,7 +20,7 @@ export default function Hero() {
             data-aos="fade-right"
             className="my-4 text-4xl font-bold leading-tight text-darken"
           >
-            <span className="text-yellow-500">Transform</span> Your Business with Technology
+            <span className="text-yellow-500">Transformasi</span> Bisnis Kamu dengan Teknologi
           </h1>
 
           <p
@@ -28,23 +28,33 @@ export default function Hero() {
             data-aos-delay="300"
             className="text-xl mb-8"
           >
-            Satutujuh is a software house and IT consulting partner that delivers innovative solutions to drive efficiency, growth, and digital transformation.
+            Satutujuh adalah perusahaan perangkat lunak dan mitra konsultasi TI yang memberikan solusi inovatif untuk mendorong efisiensi, pertumbuhan, dan transformasi digital.
           </p>
 
           <div
             data-aos="fade-up"
             data-aos-delay="700"
-            className="flex flex-col md:flex-row items-center gap-5"
+            className="
+              flex w-full flex-col items-center justify-center gap-5 text-center
+              md:flex-row md:justify-start md:text-left
+            "
           >
-            <a href="https://wa.me/62857000071717?text=Halo%20kak,%20saya%20ingin%20buat%20project%20bersama%20Satutujuh%20Tech,%20apakah%20bisa%20di%20bantu%3F"  className="bg-yellow-500 text-white text-xl font-bold rounded-full py-4 px-9 hover:scale-110 transition">
-              Start Your Project
+            <a
+              href="https://wa.me/62857000071717?text=Halo%20kak,%20saya%20ingin%20buat%20project%20bersama%20Satutujuh%20Tech,%20apakah%20bisa%20di%20bantu%3F"
+              className="rounded-full bg-yellow-500 px-9 py-4 text-xl font-bold text-white transition hover:scale-110"
+            >
+              Mulai Proyek Anda
             </a>
 
-            <div className="flex items-center space-x-3 hover:scale-110 transition">
-              <a href="#" className="bg-white w-14 h-14 rounded-full flex items-center justify-center">
+            <div className="flex items-center justify-center space-x-3 transition hover:scale-110 md:justify-start">
+              <a
+                href="#"
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-white"
+              >
                 ▶
               </a>
-              <span>See Our Work</span>
+
+              <span>Lihat Pekerjaan Kami</span>
             </div>
           </div>
         </div>

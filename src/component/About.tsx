@@ -5,12 +5,12 @@ export default function About() {
       {/* TEXT */}
       <div className="text-center max-w-2xl mx-auto">
         <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800">
-          What is <span className="text-yellow-500">Satutujuh Tech?</span>
+          Siapa <span className="text-yellow-500">Satutujuh Tech?</span>
         </h1>
 
         <p className="text-gray-500 text-sm sm:text-base leading-relaxed">
-          Satutujuh is a software house and IT consulting partner that helps businesses 
-          build scalable applications, streamline operations, and accelerate digital transformation.
+          Satutujuh adalah perusahaan perangkat lunak dan mitra konsultasi TI yang membantu bisnis
+          membangun aplikasi yang skalabel, menyederhanakan operasional, dan mempercepat transformasi digital.
         </p>
       </div>
 
