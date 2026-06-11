@@ -15,7 +15,9 @@ export default function BlogPage() {
       />
       <BlogSection />
 
-      <Footer />
+      <div className="mt-[-20px]">
+        <Footer />
+      </div>
       <button
         onClick={() =>
           window.scrollTo({

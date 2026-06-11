@@ -182,7 +182,9 @@ export default function BlogDetailPage() {
         </div>
       </section>
 
-      <Footer />
+      <div className="mt-[-20px]">
+        <Footer />
+      </div>
 
       {/* BACK TO TOP */}
       <button
