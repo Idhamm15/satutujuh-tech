@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   title: "Satu Tujuh Tech",
   description: "Transform Your Business with Technology",
 
+  verification: {
+    google: process.env.GOOGLE_SEARCH_CONSOLE_VERIFICATION,
+  },
+
   openGraph: {
     title: "Satu Tujuh Tech",
     description: "Transform Your Business with Technology",
@@ -36,11 +40,15 @@ export const metadata: Metadata = {
   },
 };
 
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const GA_TRACKING_ID = process.env.GOOGLE_TAGS_MANAGER_ID || "-";
   return (
     <html
       lang="en"
@@ -50,7 +58,7 @@ export default function RootLayout({
         {children}
       </body>
 
-      <GoogleAnalytics gaId="AW-18197696265" />
+      <GoogleAnalytics gaId={GA_TRACKING_ID} />
     </html>
   );
 }
