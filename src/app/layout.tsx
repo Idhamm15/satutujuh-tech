@@ -15,6 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_URL!
+  ),
+
   title: "Satu Tujuh Tech",
   description: "Transform Your Business with Technology",
 
