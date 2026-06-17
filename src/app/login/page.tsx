@@ -1,16 +1,96 @@
 "use client";
 
 import Image from "next/image";
+import Swal from "sweetalert2";
 import Link from "next/link";
+import Cookies from "js-cookie";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+
+    try {
+      setLoading(true);
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_URL}/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
+
+     const result = await response.json();
+
+      if (!result.status) {
+        await Swal.fire({
+          icon: "error",
+          title: "Login Gagal",
+          text: result.message,
+        });
+
+        return;
+      }
+
+      // simpan token
+      Cookies.set(
+        "access_token",
+        result.data.access_token
+      );
+
+      Cookies.set(
+        "refresh_token",
+        result.data.refresh_token
+      );
+
+      localStorage.setItem(
+        "user",
+        JSON.stringify(result.data.user)
+      );
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
+
+      await Toast.fire({
+        icon: "success",
+        title: "Login berhasil",
+      });
+
+      window.location.replace("/dashboard");
+    } catch (error) {
+      console.error(error);
+      alert("Terjadi kesalahan saat login");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
       <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
-        
         {/* Left Side */}
         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
-
           {/* Logo */}
           <div>
             <Image
@@ -28,8 +108,6 @@ export default function LoginPage() {
             </h1>
 
             <div className="w-full flex-1 mt-8">
-
-
               {/* Divider */}
               <div className="my-12 border-b text-center">
                 <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
@@ -38,13 +116,20 @@ export default function LoginPage() {
               </div>
 
               {/* Form */}
-              <form className="mx-auto max-w-xs">
-
+              <form
+                onSubmit={handleLogin}
+                className="mx-auto max-w-xs"
+              >
                 {/* Email */}
                 <input
                   className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                   type="email"
                   placeholder="Email"
+                  value={email}
+                  onChange={(e) =>
+                    setEmail(e.target.value)
+                  }
+                  required
                 />
 
                 {/* Password */}
@@ -52,6 +137,11 @@ export default function LoginPage() {
                   className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                   type="password"
                   placeholder="Password"
+                  value={password}
+                  onChange={(e) =>
+                    setPassword(e.target.value)
+                  }
+                  required
                 />
 
                 {/* Forgot Password */}
@@ -67,7 +157,8 @@ export default function LoginPage() {
                 {/* Login Button */}
                 <button
                   type="submit"
-                  className="mt-5 tracking-wide font-semibold bg-indigo-500 text-white w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center"
+                  disabled={loading}
+                  className="mt-5 tracking-wide font-semibold bg-indigo-500 text-white w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center disabled:opacity-50"
                 >
                   <svg
                     className="w-6 h-6 -ml-2"
@@ -80,11 +171,18 @@ export default function LoginPage() {
                   >
                     <path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4" />
                     <polyline points="10 17 15 12 10 7" />
-                    <line x1="15" y1="12" x2="3" y2="12" />
+                    <line
+                      x1="15"
+                      y1="12"
+                      x2="3"
+                      y2="12"
+                    />
                   </svg>
 
                   <span className="ml-3">
-                    Login
+                    {loading
+                      ? "Loading..."
+                      : "Login"}
                   </span>
                 </button>
 

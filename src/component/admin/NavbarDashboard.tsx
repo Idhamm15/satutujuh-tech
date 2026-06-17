@@ -3,7 +3,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import Cookies from "js-cookie";
+import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
@@ -24,6 +26,24 @@ export default function NavbarDashboard({
   sidebarOpen,
   onCloseSidebar,
 }: NavbarProps) {
+    const handleLogout = async () => {
+    const result = await Swal.fire({
+      title: "Logout?",
+      text: "Anda yakin ingin keluar?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Ya, Logout",
+      cancelButtonText: "Batal",
+    });
+
+    if (!result.isConfirmed) return;
+
+    Cookies.remove("access_token");
+    Cookies.remove("refresh_token");
+    localStorage.removeItem("user");
+
+    window.location.replace("/login");
+  };
   return (
     <>
       {/* Overlay */}
@@ -80,7 +100,6 @@ export default function NavbarDashboard({
             </h3>
 
             <div className="space-y-1">
-
               <SidebarButton
                 link="/dashboard"
                 icon={faChevronUp}
@@ -114,6 +133,17 @@ export default function NavbarDashboard({
                 label="Pengaturan"
               />
             </div>
+
+            <button
+              onClick={handleLogout}
+              className="w-full mt-3 flex items-center gap-3 px-4 py-3 rounded-xl text-red-600 hover:text-white hover:bg-red-500 transition"
+            >
+              <FontAwesomeIcon
+                icon={faRightFromBracket}
+                className="w-4 h-4"
+              />
+              <span>Logout</span>
+            </button>
           </div>
         </nav>
 

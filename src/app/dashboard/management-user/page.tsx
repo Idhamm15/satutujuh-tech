@@ -3,32 +3,68 @@
 import HeaderDashboard from "@/component/admin/HeaderDashboard";
 import NavbarDashboard from "@/component/admin/NavbarDashboard";
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 export default function UserManagementPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const [users, setUsers] = useState<any[]>([]);
-  const [search, setSearch] = useState("");
+    const [loading, setLoading] = useState(true);
+    const [search, setSearch] = useState("");
 
-  const API_URL = process.env.NEXT_PUBLIC_URL + "/user";
+    const [page, setPage] = useState(1);
 
-  // FETCH USERS
-  const fetchUsers = async () => {
-    try {
-      const res = await fetch(API_URL);
-      const result = await res.json();
+    const [pagination, setPagination] = useState({
+      current_page: 1,
+      per_page: 10,
+      total_data: 0,
+      total_pages: 1,
+      has_next_page: false,
+      has_prev_page: false,
+    });
 
-      if (result.status) {
-        setUsers(result.data);
+    const fetchUsers = async () => {
+      try {
+        setLoading(true);
+
+        const token = Cookies.get(
+          "access_token"
+        );
+
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_URL}/user?page=${page}&limit=10&search=${search}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const result = await res.json();
+
+        if (result.status) {
+          setUsers(result.data);
+          setPagination(result.pagination);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      console.error(err);
-    }
-  };
+    };
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [page, search]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setPage(1);
+      fetchUsers();
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [search]);
 
   // FILTER SEARCH
   const filteredUsers = users.filter((user) =>
@@ -124,50 +160,71 @@ export default function UserManagementPage() {
                 </thead>
 
                 <tbody>
-
-                  {filteredUsers.map((user) => (
-                    <tr
-                      key={user.id}
-                      className="border-b border-gray-100"
-                    >
-
-                      <td className="py-4 font-medium">
-                        {user.username}
-                      </td>
-
-                      <td>
-                        {user.email}
-                      </td>
-
-                      <td>
-                        <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
-                          {user.role}
-                        </span>
-                      </td>
-
-                      <td>
-                        {new Date(
-                          user.created_at
-                        ).toLocaleDateString("id-ID")}
-                      </td>
-
-                      <td>
-                        <div className="flex justify-center gap-2">
-
-                          <button className="bg-blue-100 text-blue-700 px-3 py-2 rounded-lg">
-                            Edit
-                          </button>
-
-                          <button className="bg-red-100 text-red-700 px-3 py-2 rounded-lg">
-                            Delete
-                          </button>
-
+                  {loading ? (
+                    <tr>
+                      <td colSpan={5}>
+                        <div className="flex h-40 items-center justify-center">
+                          <div className="h-16 w-16 animate-spin rounded-full border-4 border-gray-300 border-t-[#01085a]"></div>
                         </div>
                       </td>
-
                     </tr>
-                  ))}
+                  ) : users.length === 0 ? (
+                    <tr>
+                      <td
+                        colSpan={5}
+                        className="py-10 text-center text-gray-500"
+                      >
+                        Tidak ada data
+                      </td>
+                    </tr>
+                  ) : (
+                    users.map((user) => (
+                      <tr
+                        key={user.id}
+                        className="border-b border-gray-100"
+                      >
+                        <td className="py-4 font-medium">
+                          {user.username}
+                        </td>
 
+                        <td>{user.email}</td>
+
+                        <td>
+                          <span
+                            className={`px-3 py-1 rounded-full text-sm ${
+                              user.role === "admin"
+                                ? "bg-red-100 text-red-700"
+                                : "bg-blue-100 text-blue-700"
+                            }`}
+                          >
+                            {user.role}
+                          </span>
+                        </td>
+
+                        <td>
+                          {new Date(
+                            user.created_at
+                          ).toLocaleDateString("id-ID", {
+                            day: "2-digit",
+                            month: "long",
+                            year: "numeric",
+                          })}
+                        </td>
+
+                        <td>
+                          <div className="flex justify-center gap-2">
+                            <button className="bg-blue-100 text-blue-700 px-3 py-2 rounded-lg">
+                              Edit
+                            </button>
+
+                            <button className="bg-red-100 text-red-700 px-3 py-2 rounded-lg">
+                              Delete
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                  )}
                 </tbody>
 
               </table>

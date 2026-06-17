@@ -1,6 +1,6 @@
 // app/api/blogs/route.ts
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import jwt from "jsonwebtoken";
 
@@ -9,12 +9,29 @@ import jwt from "jsonwebtoken";
  * GET BLOGS (PUBLIC)
  * =========================
  */
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const { data, error } = await supabase
+    const searchParams = request.nextUrl.searchParams;
+
+    const page = Number(searchParams.get("page")) || 1;
+    const limit = Number(searchParams.get("limit")) || 10;
+
+    const from = (page - 1) * limit;
+    const to = from + limit - 1;
+
+    const {
+      data,
+      error,
+      count,
+    } = await supabase
       .from("blogs")
-      .select("*")
-      .order("id", { ascending: false });
+      .select("*", {
+        count: "exact",
+      })
+      .order("id", {
+        ascending: false,
+      })
+      .range(from, to);
 
     if (error) {
       return NextResponse.json(
@@ -28,12 +45,24 @@ export async function GET() {
       );
     }
 
+    const totalPages = Math.ceil(
+      (count || 0) / limit
+    );
+
     return NextResponse.json(
       {
         status: true,
         code: 200,
         message: "Success",
         data,
+        pagination: {
+          current_page: page,
+          per_page: limit,
+          total_data: count,
+          total_pages: totalPages,
+          has_next_page: page < totalPages,
+          has_prev_page: page > 1,
+        },
       },
       { status: 200 }
     );
@@ -42,7 +71,9 @@ export async function GET() {
       {
         status: false,
         code: 500,
-        message: error.message || "Internal Server Error",
+        message:
+          error.message ||
+          "Internal Server Error",
         data: null,
       },
       { status: 500 }

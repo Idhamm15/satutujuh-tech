@@ -2,25 +2,71 @@
 
 import HeaderDashboard from "@/component/admin/HeaderDashboard";
 import NavbarDashboard from "@/component/admin/NavbarDashboard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBars,
-  faChartColumn,
-  faChevronUp,
-  faCircleExclamation,
-  faDollarSign,
-  faDownload,
-  faEye,
-  faFileLines,
-  faGlobe,
-  faUsers,
-  faXmark,
-  faCalendar,
-} from "@fortawesome/free-solid-svg-icons";
+import { apiFetch } from "@/lib/api";
+import Swal from "sweetalert2";
+
+
+interface Blog {
+  id: number;
+  user_id: number;
+  title: string;
+  slug: string | null;
+  excerpt: string | null;
+  body: string;
+  thumbnail_url: string | null;
+  status: string;
+  published_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
 
 export default function DashboardPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+
+  const [page, setPage] = useState(1);
+
+  const [pagination, setPagination] = useState({
+    current_page: 1,
+    per_page: 10,
+    total_data: 0,
+    total_pages: 1,
+    has_next_page: false,
+    has_prev_page: false,
+  });
+
+  const fetchBlogs = async () => {
+    try {
+      setLoading(true);
+
+      const result = await apiFetch(
+        `/blog?page=${page}&limit=10`
+      );
+
+      if (result.status) {
+        setBlogs(result.data);
+        setPagination(result.pagination);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlogs();
+  }, [page]);
+
+  const filteredBlogs = blogs.filter((blog) =>
+    blog.title
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  );
 
   return (
     <div className="min-h-screen bg-white flex overflow-hidden">
@@ -81,36 +127,127 @@ export default function DashboardPage() {
                 </thead>
 
                 <tbody>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-4 font-medium">
-                      Cara Membuat Website Company Profile
-                    </td>
+                  {loading ? (
+                    <tr>
+                      <td colSpan={5} className="py-10">
+                        <div className="flex items-center justify-center">
+                          <div className="h-12 w-12 animate-spin rounded-full border-4 border-gray-300 border-t-[#01085a]"></div>
+                        </div>
+                      </td>
+                    </tr>
+                  ) : filteredBlogs.length === 0 ? (
+                    <tr>
+                      <td
+                        colSpan={5}
+                        className="py-10 text-center text-gray-500"
+                      >
+                        Tidak ada data
+                      </td>
+                    </tr>
+                  ) : (
+                    filteredBlogs.map((blog) => (
+                      <tr
+                        key={blog.id}
+                        className="border-b border-gray-100"
+                      >
+                        <td className="py-4 font-medium">
+                          {blog.title}
+                        </td>
 
-                    <td>Admin</td>
+                        <td>Admin</td>
 
-                    <td>
-                      <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
-                        Published
-                      </span>
-                    </td>
+                        <td>
+                          <span
+                            className={`px-3 py-1 rounded-full text-sm ${
+                              blog.status === "published"
+                                ? "bg-green-100 text-green-700"
+                                : "bg-yellow-100 text-yellow-700"
+                            }`}
+                          >
+                            {blog.status}
+                          </span>
+                        </td>
 
-                    <td>11 Juni 2026</td>
+                        <td>
+                          {new Date(blog.created_at).toLocaleDateString(
+                            "id-ID",
+                            {
+                              day: "2-digit",
+                              month: "long",
+                              year: "numeric",
+                            }
+                          )}
+                        </td>
 
-                    <td>
-                      <div className="flex justify-center gap-2">
-                        <button className="bg-blue-100 text-blue-700 px-3 py-2 rounded-lg">
-                          Edit
-                        </button>
+                        <td>
+                          <div className="flex justify-center gap-2">
+                            <a
+                              href={`/dashboard/management-blog/edit/${blog.slug}`}
+                              className="bg-blue-100 text-blue-700 px-3 py-2 rounded-lg"
+                            >
+                              Edit
+                            </a>
 
-                        <button className="bg-red-100 text-red-700 px-3 py-2 rounded-lg">
-                          Delete
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
+                            <button className="bg-red-100 text-red-700 px-3 py-2 rounded-lg">
+                              Delete
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                  )}
                 </tbody>
 
               </table>
+
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4 mt-6">
+  
+                <div className="text-sm text-gray-500">
+                  Menampilkan halaman {pagination.current_page} dari{" "}
+                  {pagination.total_pages}
+                  <span className="ml-2">
+                    ({pagination.total_data} data)
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    disabled={!pagination.has_prev_page}
+                    onClick={() => setPage(page - 1)}
+                    className="px-4 py-2 rounded-lg border disabled:opacity-50"
+                  >
+                    Sebelumnya
+                  </button>
+
+                  {Array.from(
+                    { length: pagination.total_pages },
+                    (_, i) => (
+                      <button
+                        key={i + 1}
+                        onClick={() => setPage(i + 1)}
+                        className={`px-4 py-2 rounded-lg ${
+                          page === i + 1
+                            ? "bg-blue-600 text-white"
+                            : "border"
+                        }`}
+                      >
+                        {i + 1}
+                      </button>
+                    )
+                  )}
+
+                  <button
+                    disabled={!pagination.has_next_page}
+                    onClick={() => setPage(page + 1)}
+                    className="px-4 py-2 rounded-lg border disabled:opacity-50"
+                  >
+                    Berikutnya
+                  </button>
+                </div>
+
+              </div>
+
+
             </div>
 
           </div>
