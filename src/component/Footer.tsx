@@ -68,7 +68,7 @@ export default function Footer() {
 
               <h4 className="text-lg font-semibold">
                 +62 857 000 717 17 (Admin) <br />
-                +62 877 888 98 454 (Sales) <br />
+                {/* +62 877 888 98 454 (Sales) <br /> */}
                 +62 838 2472 3921 (Sales)
               </h4>
             </div>
