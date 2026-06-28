@@ -8,7 +8,7 @@ export default function Features() {
       {/* Heading */}
       <div className="max-w-xl mx-auto text-center mt-24">
         <h1 className="font-bold text-2xl mb-3">
-          All-In-One <span className="text-yellow-500">Digital Solutions.</span>
+          All-In-One <span className="text-blue-600">Digital Solutions.</span>
         </h1>
         <p className="text-gray-500">
             Satutujuh menyediakan layanan pengembangan perangkat lunak dan konsultasi TI menyeluruh untuk membantu bisnis membangun, mengelola, dan meningkatkan skala produk digital mereka secara efisien.

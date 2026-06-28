@@ -1,9 +1,6 @@
 "use client";
 
-import About from "@/component/About";
 import Footer from "@/component/Footer";
-import OurApproach from "@/component/OurApproach";
-import FaqSection from "@/component/FaqSection";
 import Navbar from "@/component/Navbar";
 import Header from "@/component/Header";
 import BasePortfolio from "@/component/BasePortofolio";
@@ -19,7 +16,6 @@ export default function PortfolioPage() {
       />
       <BasePortfolio/>
       <CTA  />
-      <br /><br /><br />
       <Footer />
       <button
         onClick={() =>

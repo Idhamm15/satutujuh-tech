@@ -1,14 +1,14 @@
 "use client";
 
-import About from "@/component/About";
 import Footer from "@/component/Footer";
-import OurApproach from "@/component/OurApproach";
-import FaqSection from "@/component/FaqSection";
 import Navbar from "@/component/Navbar";
 import Header from "@/component/Header";
 import PortofolioSection from "@/component/PortofolioSection";
 import Image from "next/image";
 import CTA from "@/component/CTA";
+import BasePortfolio from "@/component/BasePortofolio";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const clients = [
   "/logos/logo1.png",
@@ -101,7 +101,7 @@ export default function ServicePage() {
                 Mengapa Memilih Satutujuh?
               </span>
 
-              <h1 className="mt-3 text-4xl font-bold leading-tight text-slate-900 md:text-5xl">
+              <h1 className="mt-3 text-2xl font-bold leading-tight text-slate-900 md:text-4xl">
                 Sebagai Mitra Jasa
                 <br />
                 Pembuatan Website Anda
@@ -169,23 +169,26 @@ export default function ServicePage() {
             </p>
           </div>
 
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
+          <div className="mt-14 grid gap-3 md:grid-cols-2">
             {benefits.map((item, index) => (
               <div
                 key={index}
                 className="rounded-2xl bg-white p-6 shadow-sm transition hover:shadow-md"
               >
                 <div className="flex gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500 text-white">
-                    ✓
-                  </div>
+                <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-blue-600 text-white lg:h-15 lg:w-15">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-3xl lg:text-2xl"
+                  />
+                </div>
 
                   <div>
-                    <h3 className="font-semibold text-slate-900">
+                    <h3 className="font-semibold text-slate-900 lg:mx-auto mx-3">
                       {item.title}
                     </h3>
 
-                    <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                    <p className="mt-2 text-sm leading-relaxed text-gray-600 lg:mx-auto mx-3">
                       {item.desc}
                     </p>
                   </div>
@@ -196,9 +199,8 @@ export default function ServicePage() {
         </div>
       </section>
 
-      <PortofolioSection />
+      <BasePortfolio/>
       <CTA />
-      <br /><br /><br />
       <Footer />
       <button
         onClick={() =>

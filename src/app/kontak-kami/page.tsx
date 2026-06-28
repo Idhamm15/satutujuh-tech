@@ -33,7 +33,7 @@ export default function ContactPage() {
               />
             </div>
 
-            <div className="bg-[#0f4f82] p-5 md:p-8 flex justify-center">
+            <div className="bg-blue-600 p-5 md:p-8 flex justify-center">
               <div className="flex items-center gap-3 md:gap-5 border-2 border-[#ffd8bd] rounded-full px-5 md:px-8 py-3 md:py-4">
                 <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-white flex items-center justify-center">
                   <FontAwesomeIcon
@@ -88,7 +88,7 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                className="w-full sm:w-auto bg-[#0f4f82] text-white px-10 py-4 rounded-full hover:bg-[#0c426d] transition"
+                className="w-full sm:w-auto bg-blue-600 text-white px-10 py-4 rounded-full hover:bg-[#0c426d] transition"
               >
                 Send
               </button>

@@ -11,17 +11,17 @@ export default function Hero() {
 
   return (
     <div className="bg-blue-200">
-      <div className="max-w-screen-xl px-8 mx-auto flex flex-col lg:flex-row items-start">
+      <div className="mt-14 mb-3 lg:mb-32 max-w-screen-xl px-8 mx-auto flex flex-col lg:flex-row items-start">
         
         {/* LEFT */}
-        <div className="flex flex-col w-full lg:w-6/12 justify-center lg:pt-24 items-start text-center lg:text-left mb-5">
+        <div className="flex mt-10 flex-col w-full lg:w-6/12 justify-center lg:pt-24 items-start text-center lg:text-left mb-5">
           
-          <h1
-            data-aos="fade-right"
-            className="my-4 text-4xl font-bold leading-tight text-darken"
-          >
-            <span className="text-yellow-500">Transformasi</span> Bisnis Kamu dengan Teknologi
-          </h1>
+        <h1
+          data-aos="fade-right"
+          className="my-4 text-4xl font-bold leading-tight text-white"
+        >
+          <span className="text-blue-600">Transformasi</span> Bisnis Kamu dengan Teknologi
+        </h1>
 
           <p
             data-aos="fade-down"
@@ -41,7 +41,7 @@ export default function Hero() {
           >
             <a
               href="https://wa.me/62857000071717?text=Halo%20kak,%20saya%20ingin%20buat%20project%20bersama%20Satutujuh%20Tech,%20apakah%20bisa%20di%20bantu%3F"
-              className="rounded-full bg-yellow-500 px-9 py-4 text-xl font-bold text-white transition hover:scale-110"
+              className="rounded-full bg-blue-600 px-9 py-4 text-xl font-bold text-white transition hover:scale-110"
             >
               Mulai Proyek Anda
             </a>
@@ -108,7 +108,7 @@ export default function Hero() {
       </div>
 
       {/* WAVE */}
-      <div className="text-white -mt-14 sm:-mt-24 lg:-mt-36 relative">
+      <div className="text-white sm:-mt-24 lg:-mt-36 relative">
         <svg
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"

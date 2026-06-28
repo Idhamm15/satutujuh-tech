@@ -7,6 +7,14 @@ import { useParams } from "next/navigation";
 
 import Navbar from "@/component/Navbar";
 import Footer from "@/component/Footer";
+import { faCalendarDays, faCalendar, faUser } from "@fortawesome/free-solid-svg-icons";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const limitText = (text: string, max = 60) => {
   if (!text) return "";
@@ -27,7 +35,7 @@ export default function BlogDetailPage() {
   // FETCH DETAIL BLOG
   // =========================
   useEffect(() => {
-    if (!slug) return; // 🔥 IMPORTANT GUARD
+    if (!slug) return;
 
     const fetchBlog = async () => {
       try {
@@ -93,94 +101,210 @@ export default function BlogDetailPage() {
     );
   }
 
+  // remove HTML tags
+  const stripHtml = (html: string) => {
+    if (!html) return "";
+    return html.replace(/<[^>]*>/g, "");
+  };
+
+  // limit text
+  const limitText = (text: string, max = 50) => {
+    if (!text) return "";
+    return text.length > max
+      ? text.substring(0, max) + "..."
+      : text;
+  };
+
   return (
     <>
       <Navbar />
 
-      <section className="bg-[#edf3fb] py-24">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-14 px-6 lg:grid-cols-3 lg:px-10 ">
+      <section className="bg-white">
 
-          {/* =========================
-              LEFT - DETAIL BLOG
-          ========================= */}
-        <div className="overflow-hidden rounded-3xl bg-white shadow-sm lg:col-span-2">
+        {/* ===========================
+            HERO IMAGE
+        =========================== */}
+        <div className="relative h-[260px] md:h-[420px] w-full">
 
-        {/* IMAGE */}
-        <div className="relative h-[400px] w-full">
-            <Image
+          <Image
             src={blog.thumbnail_url || "/img/ai.jpg"}
             alt={blog.title}
             fill
             className="object-cover"
-            />
+            priority
+          />
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1f248e]/80 to-[#1f248e]/40" />
+
         </div>
 
-        {/* CONTENT */}
-        <div className="space-y-8 p-8">
+        {/* ===========================
+            HEADER CARD
+        =========================== */}
+        <div className="relative z-10 mx-auto -mt-24 max-w-5xl px-6">
 
-            <h1 className="text-4xl font-bold text-[#01085a]">
-            {blog.title}
+          <div className="rounded-3xl bg-white px-8 py-10 shadow-xl md:px-16">
+
+            <h1 className="text-center text-3xl font-bold text-[#11153D] md:text-5xl">
+              {blog.title}
             </h1>
 
-            <p className="text-sm text-gray-500">
-            {blog.created_at
-                ? new Date(blog.created_at).toLocaleDateString()
-                : "N/A"}
-            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-gray-500">
 
-            <div
-            className="prose max-w-none text-gray-700"
-            dangerouslySetInnerHTML={{
-                __html: blog.body,
-            }}
-            />
+              <div className="flex items-center gap-2">
+                <FontAwesomeIcon icon={faCalendarDays} />
+                <span>
+                  {blog.created_at
+                    ? new Date(blog.created_at).toLocaleDateString(
+                        "id-ID",
+                        {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        }
+                      )
+                    : "-"}
+                </span>
+              </div>
 
-        </div>
-        </div>
+              <div className="flex items-center gap-2">
+                <FontAwesomeIcon icon={faUser} />
+                <span>Admin Satutujuh Tech</span>
+              </div>
 
-          {/* =========================
-              RIGHT - SIDEBAR
-          ========================= */}
-          <div className="space-y-8">
+            </div>
 
-            <h3 className="text-2xl font-bold text-[#01085a]">
-              Artikel Lainnya
-            </h3>
-
-            {blogs
-              .filter((b) => b.slug !== blog.slug)
-              .slice(0, 5)
-              .map((item) => (
-                <Link
-                  key={item.id}
-                  href={`/blog/${item.slug}`}
-                  className="flex gap-4 rounded-2xl bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl">
-                    <Image
-                      src={item.thumbnail_url || "/img/ai.jpg"}
-                      alt={item.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-
-                  <div>
-                    <h4 className="text-sm font-bold text-[#01085a]">
-                      {limitText(item.title, 40)}
-                    </h4>
-
-                    <p className="mt-1 text-xs text-gray-500">
-                      {item.created_at
-                        ? new Date(item.created_at).toLocaleDateString()
-                        : "N/A"}
-                    </p>
-                  </div>
-                </Link>
-              ))}
           </div>
+
         </div>
+
+        {/* ===========================
+            ARTICLE CONTENT
+        =========================== */}
+        <div className="mx-auto max-w-4xl px-6 py-20">
+
+          <article
+            className="
+              prose
+              prose-lg
+              max-w-none
+
+              prose-headings:text-[#11153D]
+              prose-p:text-slate-700
+              prose-a:text-cyan-600
+              prose-img:rounded-2xl
+            "
+            dangerouslySetInnerHTML={{
+              __html: blog.body,
+            }}
+          />
+
+        </div>
+
       </section>
+
+      {/* =========================
+            RELATED ARTICLES
+        ========================= */}
+
+        <section className="bg-white py-24">
+          <div className="mx-auto max-w-7xl px-6">
+
+            <h2 className="mb-16 text-center text-4xl font-bold text-[#01085a]">
+              Related Articles
+            </h2>
+
+            <Swiper
+              modules={[Pagination, Autoplay]}
+              pagination={{
+                clickable: true,
+              }}
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
+              spaceBetween={35}
+              breakpoints={{
+                0: {
+                  slidesPerView: 1,
+                },
+                768: {
+                  slidesPerView: 2,
+                },
+                1200: {
+                  slidesPerView: 3,
+                },
+              }}
+            >
+              {blogs
+                .filter((item) => item.slug !== blog.slug)
+                .map((item) => (
+                  <SwiperSlide key={item.id}>
+
+                    <article className="group">
+
+                      {/* IMAGE */}
+                      <Link href={`/blog/${item.slug}`}>
+                        <div className="relative h-[260px] overflow-hidden rounded-3xl">
+
+                          <Image
+                            src={item.thumbnail_url || "/img/ai.jpg"}
+                            alt={item.title}
+                            fill
+                            className="object-cover transition duration-500 group-hover:scale-105"
+                          />
+
+                        </div>
+                      </Link>
+
+                      {/* META */}
+                      <div className="mt-6 flex items-center gap-6 text-sm text-gray-500">
+
+                        <div className="flex items-center gap-2">
+                          <FontAwesomeIcon icon={faCalendar} />
+                          <span>
+                            {item.created_at
+                              ? new Date(item.created_at).toLocaleDateString(
+                                  "id-ID",
+                                  {
+                                    day: "numeric",
+                                    month: "long",
+                                    year: "numeric",
+                                  }
+                                )
+                              : "-"}
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <FontAwesomeIcon icon={faUser} />
+                          <span>Admin</span>
+                        </div>
+
+                      </div>
+
+                      {/* TITLE */}
+                      <Link
+                        href={`/blog/${item.slug}`}
+                        className="mt-5 block text-2xl font-bold leading-snug text-[#1D4ED8] transition hover:text-cyan-600"
+                      >
+                        {limitText(item.title, 65)}
+                      </Link>
+
+                      {/* DESCRIPTION */}
+                      <p className="mt-4 text-base leading-8 text-slate-600">
+                        {limitText(stripHtml(blog.body), 120)}
+                      </p>
+
+                    </article>
+
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+
+          </div>
+        </section>
 
       <div className="mt-[-20px]">
         <Footer />

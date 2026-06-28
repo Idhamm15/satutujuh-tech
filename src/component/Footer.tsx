@@ -16,7 +16,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-gray-800 text-white rounded-t-[40px]">
+    <footer className="relative overflow-hidden bg-gray-800 text-white">
 
       {/* BACKGROUND SHAPE */}
       <div className="absolute left-0 top-20 h-[400px] w-[400px] opacity-10">
@@ -147,41 +147,112 @@ export default function Footer() {
             <ul className="space-y-4 text-white/80">
 
               <li>
-                <a className="transition hover:text-cyan-300">
+                <a
+                  href="/jasa-pembuatan-aplikasi"
+                  className="transition hover:text-cyan-300"
+                >
                   Jasa Pembuatan Aplikasi
                 </a>
               </li>
 
               <li>
-                <a className="transition hover:text-cyan-300">
+                <a
+                  href="/jasa-pembuatan-aplikasi-web"
+                  className="transition hover:text-cyan-300"
+                >
+                  Jasa Pembuatan Aplikasi Web
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="/jasa-pembuatan-aplikasi-android"
+                  className="transition hover:text-cyan-300"
+                >
+                  Jasa Pembuatan Aplikasi Android
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="/jasa-pembuatan-aplikasi-mobile"
+                  className="transition hover:text-cyan-300"
+                >
+                  Jasa Pembuatan Aplikasi Mobile
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="/jasa-pembuatan-website"
+                  className="transition hover:text-cyan-300"
+                >
                   Jasa Pembuatan Website
                 </a>
               </li>
 
               <li>
-                <a className="transition hover:text-cyan-300">
-                  Jasa Mobile Apps
+                <a
+                  href="/jasa-it-support"
+                  className="transition hover:text-cyan-300"
+                >
+                  Jasa IT Support
                 </a>
               </li>
 
               <li>
-                <a className="transition hover:text-cyan-300">
+                <a
+                  href="/it-infrastructure"
+                  className="transition hover:text-cyan-300"
+                >
                   IT Infrastructure
                 </a>
               </li>
 
               <li>
-                <a className="transition hover:text-cyan-300">
-                  Maintenance Website
+                <a
+                  href="/jasa-setting-vps"
+                  className="transition hover:text-cyan-300"
+                >
+                  Jasa Setting VPS
                 </a>
               </li>
 
               <li>
-                <a className="transition hover:text-cyan-300">
+                <a
+                  href="/jasa-maintenance-website"
+                  className="transition hover:text-cyan-300"
+                >
+                  Jasa Maintenance Website
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="/transformasi-bisnis"
+                  className="transition hover:text-cyan-300"
+                >
+                  Transformasi Bisnis
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="/strategi-digital"
+                  className="transition hover:text-cyan-300"
+                >
                   Strategi Digital
                 </a>
               </li>
 
+              <li>
+                <a
+                  href="/keamanan-digital"
+                  className="transition hover:text-cyan-300"
+                >
+                  Keamanan Digital
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -192,37 +263,89 @@ export default function Footer() {
             </h3>
 
             <ul className="space-y-4 text-white/80">
-
               <li>
-                <a className="transition hover:text-cyan-300">
+                <a href="/jasa-pembuatan-aplikasi-jakarta" className="transition hover:text-cyan-300">
                   Jasa Pembuatan Aplikasi Jakarta
                 </a>
               </li>
 
               <li>
-                <a className="transition hover:text-cyan-300">
+                <a href="/jasa-pembuatan-aplikasi-bekasi" className="transition hover:text-cyan-300">
+                  Jasa Pembuatan Aplikasi Bekasi
+                </a>
+              </li>
+
+              <li>
+                <a href="/jasa-pembuatan-aplikasi-depok" className="transition hover:text-cyan-300">
+                  Jasa Pembuatan Aplikasi Depok
+                </a>
+              </li>
+
+              <li>
+                <a href="/jasa-pembuatan-aplikasi-bogor" className="transition hover:text-cyan-300">
+                  Jasa Pembuatan Aplikasi Bogor
+                </a>
+              </li>
+
+              <li>
+                <a href="/jasa-pembuatan-aplikasi-tangerang" className="transition hover:text-cyan-300">
+                  Jasa Pembuatan Aplikasi Tangerang
+                </a>
+              </li>
+
+              <li>
+                <a href="/jasa-pembuatan-aplikasi-surabaya" className="transition hover:text-cyan-300">
+                  Jasa Pembuatan Aplikasi Surabaya
+                </a>
+              </li>
+
+              <li>
+                <a href="/jasa-pembuatan-aplikasi-bali" className="transition hover:text-cyan-300">
+                  Jasa Pembuatan Aplikasi Bali
+                </a>
+              </li>
+
+              <li>
+                <a href="/jasa-pembuatan-website-jakarta" className="transition hover:text-cyan-300">
+                  Jasa Pembuatan Website Jakarta
+                </a>
+              </li>
+
+              <li>
+                <a href="/jasa-pembuatan-website-bekasi" className="transition hover:text-cyan-300">
                   Jasa Pembuatan Website Bekasi
                 </a>
               </li>
 
               <li>
-                <a className="transition hover:text-cyan-300">
+                <a href="/jasa-pembuatan-website-depok" className="transition hover:text-cyan-300">
+                  Jasa Pembuatan Website Depok
+                </a>
+              </li>
+
+              <li>
+                <a href="/jasa-pembuatan-website-bogor" className="transition hover:text-cyan-300">
                   Jasa Pembuatan Website Bogor
                 </a>
               </li>
 
               <li>
-                <a className="transition hover:text-cyan-300">
+                <a href="/jasa-pembuatan-website-tangerang" className="transition hover:text-cyan-300">
                   Jasa Pembuatan Website Tangerang
                 </a>
               </li>
 
               <li>
-                <a className="transition hover:text-cyan-300">
-                  Jasa Pembuatan Aplikasi Depok
+                <a href="/jasa-pembuatan-website-surabaya" className="transition hover:text-cyan-300">
+                  Jasa Pembuatan Website Surabaya
                 </a>
               </li>
 
+              <li>
+                <a href="/jasa-pembuatan-website-bali" className="transition hover:text-cyan-300">
+                  Jasa Pembuatan Website Bali
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -235,37 +358,31 @@ export default function Footer() {
             <ul className="space-y-4 text-white/80">
 
               <li>
-                <a className="transition hover:text-cyan-300">
+              <a href="/" className="transition hover:text-cyan-300">
                   Beranda
                 </a>
               </li>
 
               <li>
-                <a className="transition hover:text-cyan-300">
+                <a href="/layanan" className="transition hover:text-cyan-300">
                   Layanan
                 </a>
               </li>
 
               <li>
-                <a className="transition hover:text-cyan-300">
-                  Service
+                <a href="/portofolio" className="transition hover:text-cyan-300">
+                  Portofolio
                 </a>
               </li>
 
               <li>
-                <a className="transition hover:text-cyan-300">
-                  Portfolio
-                </a>
-              </li>
-
-              <li>
-                <a className="transition hover:text-cyan-300">
+                <a href="/blog" className="transition hover:text-cyan-300">
                   Blog
                 </a>
               </li>
 
               <li>
-                <a className="transition hover:text-cyan-300">
+                <a href="kontak-kami" className="transition hover:text-cyan-300">
                   Kontak Kami
                 </a>
               </li>

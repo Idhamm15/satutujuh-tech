@@ -27,7 +27,7 @@ export default function Header({
           </div>
         </div>
 
-        <h1 className="text-5xl font-extrabold tracking-tight text-white md:text-7xl">
+        <h1 className="text-4xl font-extrabold tracking-tight text-white md:text-7xl">
           {title}
         </h1>
       </div>

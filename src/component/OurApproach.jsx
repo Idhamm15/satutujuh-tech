@@ -52,7 +52,7 @@ export default function OurApproach() {
 
           {/* LABEL */}
           <div className="mb-6 flex items-center gap-3">
-            <div className="h-[1px] w-16 bg-blue-600" />
+            <div className="h-[1px] w-16 bg-blue-200" />
 
             <span className="text-sm font-medium uppercase tracking-[3px] text-blue-900">
               Working Process
@@ -116,7 +116,7 @@ export default function OurApproach() {
                   
                   ${
                     isActive
-                      ? "z-20 border-blue-700 bg-blue-700 text-white"
+                      ? "z-20 border-blue-700 bg-blue-600 text-white"
                       : "border-slate-500 bg-transparent text-slate-900"
                   }`}
                   style={{

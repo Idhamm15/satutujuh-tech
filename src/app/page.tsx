@@ -10,6 +10,7 @@ import PortofolioSection from "@/component/PortofolioSection";
 import Navbar from "@/component/Navbar";
 import Image from "next/image";
 import CTA from "@/component/CTA";
+import BasePortfolio from "@/component/BasePortofolio";
 
 export default function Home() {
   return (
@@ -17,9 +18,9 @@ export default function Home() {
       <LandingHero />
       <Features />
       <OurApproach />
-      <PortofolioSection />
+      {/* <PortofolioSection /> */}
+      <BasePortfolio/>
       <CTA/>
-      <br /><br /><br />
       <Footer />
 
       {/* BACK TO TOP */}
